@@ -55,8 +55,8 @@ build_binutils() {
     --disable-gdb \
     --enable-gold \
     --with-pkgversion="Eva BinUtils"
-  make -j$(($(nproc --all) + 2))
-  make install -j$(($(nproc --all) + 2))
+  make -j$(($(nproc --all) - 3))
+  make install -j$(($(nproc --all) - 3))
   cd ../
   echo "Built Binutils, proceeding to next step...."
 }
@@ -94,10 +94,10 @@ build_gcc() {
     --with-linker-hash-style=gnu \
     --with-sysroot
 
-  make all-gcc -j$(($(nproc --all) + 2))
-  make all-target-libgcc -j$(($(nproc --all) + 2))
-  make install-gcc -j$(($(nproc --all) + 2))
-  make install-target-libgcc -j$(($(nproc --all) + 2))
+  make all-gcc -j$(($(nproc --all) - 3))
+  make all-target-libgcc -j$(($(nproc --all) - 3))
+  make install-gcc -j$(($(nproc --all) - 3))
+  make install-target-libgcc -j$(($(nproc --all) - 3))
   echo "Built GCC!"
 }
 
